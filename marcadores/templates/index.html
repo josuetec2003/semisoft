@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %}Mis Marcadores{% endblock %}
+
+{% block contenido %}
+    <h1>Mis Marcadores</h1>
+	
+	<p><a href="/agregar-marcador/">Agregar marcador</a></p>
+
+    {% for marcador in marcadores %}
+    	<div>
+    		<h2>{{ marcador.descripcion }}</h2>
+    		<p>
+    			URL: <a href="{{ marcador.url }}" target="_blank">Ir al enlace</a> 
+    		</p>
+    		<span title="{{ marcador.fecha }}">
+                Publicado hace <strong>{{ marcador.fecha|timesince }}</strong> - por <strong>{{ marcador.user.get_full_name }}</strong>
+            </span>
+    	</div>
+    {% endfor %}
+{% endblock %}

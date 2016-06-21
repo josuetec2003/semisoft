@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agregar marcador{% endblock %}
+
+{% block contenido %}
+    
+    <p>
+        {{ form.errors }}
+    </p>
+
+    <form action="/guardar-marcador/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Agregar">
+    </form>
+{% endblock %}
